@@ -1,3 +1,4 @@
 comandos de consola:
 npx prisma migrate dev
 node index.js
+archivo .env reemplazar por:mysql://root:@localhost:3306/productos
