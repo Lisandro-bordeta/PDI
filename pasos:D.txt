@@ -1,4 +1,5 @@
 comandos de consola:
 npx prisma migrate dev
 node index.js
+nota: instalar xampp
 archivo .env reemplazar por:mysql://root:@localhost:3306/productos
