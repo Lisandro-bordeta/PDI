@@ -1,0 +1,23 @@
+{
+  "name": "product-frontend",
+  "version": "1.0.0",
+  "description": "A simple frontend application to manage products using an existing API.",
+  "main": "src/js/app.js",
+  "scripts": {
+    "start": "live-server public",
+    "build": "echo 'Build step not defined'",
+    "test": "echo 'No tests defined'"
+  },
+  "keywords": [
+    "frontend",
+    "products",
+    "api",
+    "crud"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  }
+}
