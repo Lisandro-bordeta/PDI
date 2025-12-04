@@ -3,3 +3,5 @@ npx prisma migrate dev
 node index.js
 nota: instalar xampp
 archivo .env reemplazar por:mysql://root:@localhost:3306/productos
+cargar productos en la base de datos( a mano).
+ingrsar localhost3000(api/productos)
