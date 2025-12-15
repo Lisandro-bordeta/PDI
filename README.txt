@@ -5,7 +5,7 @@ npx prisma migrate dev --name=init
 npx prisma db push
 npm install
 npx prisma generate
-npm start
+cd Productos-Ejemplo-main ; npm start
 nota: instalar xampp,
 el programa va en htdocs
 archivo .env reemplazar por:mysql://root:@localhost:3306/productos
