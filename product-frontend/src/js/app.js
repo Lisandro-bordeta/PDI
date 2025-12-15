@@ -1,18 +1,24 @@
-const api = require('./api');
-
 document.addEventListener('DOMContentLoaded', () => {
-    const productList = document.getElementById('product-list');
+    const productList = document.getElementById('products');
     const productForm = document.getElementById('product-form');
     const productIdInput = document.getElementById('product-id');
-    const productNameInput = document.getElementById('product-name');
-    const productPriceInput = document.getElementById('product-price');
+    const productNombreInput = document.getElementById('product-nombre');
+    const productCategoriaInput = document.getElementById('product-categoria');
+    const productPrecioInput = document.getElementById('product-precio');
+    const productImgUrlInput = document.getElementById('product-imgUrl');
 
     const loadProducts = async () => {
-        const products = await api.fetchProducts();
+        const products = await window.api.fetchProducts();
         productList.innerHTML = '';
         products.forEach(product => {
             const li = document.createElement('li');
-            li.textContent = `${product.name} - $${product.price}`;
+            li.textContent = `${product.nombre} - ${product.categoria} - $${product.precio}`;
+            if (product.imgUrl) {
+                const img = document.createElement('img');
+                img.src = product.imgUrl;
+                img.style.width = '50px';
+                li.appendChild(img);
+            }
             li.appendChild(createEditButton(product));
             li.appendChild(createDeleteButton(product.id));
             productList.appendChild(li);
@@ -24,8 +30,10 @@ document.addEventListener('DOMContentLoaded', () => {
         button.textContent = 'Edit';
         button.onclick = () => {
             productIdInput.value = product.id;
-            productNameInput.value = product.name;
-            productPriceInput.value = product.price;
+            productNombreInput.value = product.nombre;
+            productCategoriaInput.value = product.categoria;
+            productPrecioInput.value = product.precio;
+            productImgUrlInput.value = product.imgUrl || '';
         };
         return button;
     };
@@ -34,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const button = document.createElement('button');
         button.textContent = 'Delete';
         button.onclick = async () => {
-            await api.deleteProduct(id);
+            await window.api.deleteProduct(id);
             loadProducts();
         };
         return button;
@@ -43,18 +51,22 @@ document.addEventListener('DOMContentLoaded', () => {
     productForm.onsubmit = async (e) => {
         e.preventDefault();
         const id = productIdInput.value;
-        const name = productNameInput.value;
-        const price = productPriceInput.value;
+        const nombre = productNombreInput.value;
+        const categoria = productCategoriaInput.value;
+        const precio = parseFloat(productPrecioInput.value);
+        const imgUrl = productImgUrlInput.value;
 
         if (id) {
-            await api.updateProduct(id, { name, price });
+            await window.api.updateProduct(id, { nombre, categoria, precio, imgUrl });
         } else {
-            await api.createProduct({ name, price });
+            await window.api.createProduct({ nombre, categoria, precio, imgUrl });
         }
 
         productIdInput.value = '';
-        productNameInput.value = '';
-        productPriceInput.value = '';
+        productNombreInput.value = '';
+        productCategoriaInput.value = '';
+        productPrecioInput.value = '';
+        productImgUrlInput.value = '';
         loadProducts();
     };
 

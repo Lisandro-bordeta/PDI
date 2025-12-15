@@ -1,6 +1,6 @@
-const apiUrl = 'https://api.example.com/products'; // Replace with your actual API URL
+const apiUrl = 'http://localhost:3000/api/productos'; // URL de la API local
 
-export const fetchProducts = async () => {
+const fetchProducts = async () => {
     const response = await fetch(apiUrl);
     if (!response.ok) {
         throw new Error('Failed to fetch products');
@@ -8,7 +8,7 @@ export const fetchProducts = async () => {
     return await response.json();
 };
 
-export const createProduct = async (product) => {
+const createProduct = async (product) => {
     const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
@@ -22,7 +22,7 @@ export const createProduct = async (product) => {
     return await response.json();
 };
 
-export const updateProduct = async (id, product) => {
+const updateProduct = async (id, product) => {
     const response = await fetch(`${apiUrl}/${id}`, {
         method: 'PUT',
         headers: {
@@ -36,7 +36,7 @@ export const updateProduct = async (id, product) => {
     return await response.json();
 };
 
-export const deleteProduct = async (id) => {
+const deleteProduct = async (id) => {
     const response = await fetch(`${apiUrl}/${id}`, {
         method: 'DELETE',
     });
@@ -44,4 +44,12 @@ export const deleteProduct = async (id) => {
         throw new Error('Failed to delete product');
     }
     return await response.json();
+};
+
+// Hacer las funciones globales para que app.js las use
+window.api = {
+    fetchProducts,
+    createProduct,
+    updateProduct,
+    deleteProduct
 };
