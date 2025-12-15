@@ -1,8 +1,11 @@
 comandos de consola:
-npx prisma migrate dev
-node index.js
 npx prisma migrate dev --name=init
-nota: instalar xampp
+npx prisma db push
+npm install
+npx prisma generate
+npm start
+nota: instalar xampp,
+el programa va en htdocs
 archivo .env reemplazar por:mysql://root:@localhost:3306/productos
 cargar productos en la base de datos( a mano).
 ingrsar localhost3000(api/productos)
