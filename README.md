@@ -1,3 +1,2 @@
-# Proyecto de Node de [Lisandro-Bordeta]
-
-Este es mi proyecto de Node.js para el TP N°6 de la materia PDISC (que es mi favorita).
+hola profe ojala leas el readme, los 2 pirateamos al menos una vez un juego jsjs, bueno la guia de instalacion va a estar aca
+guia
