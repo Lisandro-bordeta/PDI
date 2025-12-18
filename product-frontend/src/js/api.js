@@ -1,4 +1,4 @@
-const apiUrl = 'http://localhost:3000/api/productos'; // URL de la API local
+const apiUrl = 'http://localhost:3000/api/productos'; 
 
 const fetchProducts = async () => {
     const response = await fetch(apiUrl);
