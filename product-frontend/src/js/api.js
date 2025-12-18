@@ -46,7 +46,7 @@ const deleteProduct = async (id) => {
     return await response.json();
 };
 
-// Hacer las funciones globales para que app.js las use
+
 window.api = {
     fetchProducts,
     createProduct,
